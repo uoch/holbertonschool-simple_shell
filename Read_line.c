@@ -21,7 +21,9 @@ int main(void)
 		cmd = split(buff, " ");
 		pid = fork();
 		if (pid == -1)
+		{
 			return -1;
+		}
 		if (pid == 0)
 		{
 
