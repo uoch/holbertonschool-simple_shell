@@ -16,6 +16,4 @@
 #define DELIM " \t\r\n\a"
 char **split(char *raw_cmd, char *limit);
 void get_absolute_path(char **cmd);
-void free_array(char **array);
-void free_buff(char *array);
 #endif

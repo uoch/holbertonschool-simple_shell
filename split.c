@@ -36,7 +36,8 @@ void get_absolute_path(char **cmd)
 			free(bin);
 			bin = NULL;
 		}
-		free_array(path_split);
+		for (i = 0; path_split[i]; i++)
+		free(path_split[i]);
 		/* replace cmd with  path or  NULL if cmd not found */
 		free(cmd[0]);
 		cmd[0] = bin;
@@ -72,24 +73,4 @@ char **split(char *raw_cmd, char *limit)
 	cmd = realloc(cmd, ((idx + 1) * sizeof(char *)));
 	cmd[idx] = NULL;
 	return (cmd);
-}
-void free_array(char **array)
-{
-	int i;
-
-	for (i = 0; array[i]; i++)
-	{
-		free(array[i]);
-	}
-	free(array);
-}
-void free_buf(char *array)
-{
-	int i;
-
-	for (i = 0; array[i]; i++)
-	{
-		free(array[i]);
-	}
-	free(array);
 }

@@ -22,7 +22,7 @@ int main(void)
 		cmd = split(buff, DELIM);
 		if (strcmp(cmd[0], "exit") == 0)
 		{
-			free_array(cmd);
+			free(cmd);
 			exit(0);
 		}
 		pid = fork();
@@ -42,10 +42,11 @@ int main(void)
 		{
 			waitpid(pid, &status, 0);
 			kill(pid, SIGTERM);
-			free_array(cmd);
+			free (cmd);
+			free(buff);
 		}
 	}
-	free_buff(buff);
+	
 	exit(EXIT_SUCCESS);
 	return (0);
 }
