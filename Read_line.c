@@ -1,5 +1,8 @@
 #include "shell.h"
-
+/**
+ * main - shell looping
+ * Return: shel good
+ */
 int main(void)
 {
 	char *buff;
