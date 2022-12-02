@@ -80,10 +80,8 @@ void free_array(char **array)
 	for (i = 0; array[i]; i++)
 	{
 		free(array[i]);
-		array[i] = NULL;
 	}
 	free(array);
-	array = NULL;
 }
 void free_buf(char *array)
 {
@@ -92,8 +90,6 @@ void free_buf(char *array)
 	for (i = 0; array[i]; i++)
 	{
 		free(array[i]);
-		array[i] = NULL;
 	}
 	free(array);
-	array = NULL;
 }
