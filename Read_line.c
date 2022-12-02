@@ -25,6 +25,12 @@ int main(void)
 			free(cmd);
 			exit(0);
 		}
+		if (strcmp(cmd[0], "env") == 0)
+		{
+			free(cmd);
+			print_env();
+			continue;
+		}
 		pid = fork();
 		if (pid == -1)
 		{
@@ -42,11 +48,11 @@ int main(void)
 		{
 			waitpid(pid, &status, 0);
 			kill(pid, SIGTERM);
-			free (cmd);
+			free(cmd);
 			free(buff);
 		}
 	}
-	
+
 	exit(EXIT_SUCCESS);
 	return (0);
 }
