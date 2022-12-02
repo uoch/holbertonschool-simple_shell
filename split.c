@@ -7,9 +7,9 @@
  */
 char **split(char *raw_cmd, char *limit)
 {
-	char	*ptr = NULL;
-	char	**cmd = NULL;
-	size_t	idx = 0;
+	char *ptr = NULL;
+	char **cmd = NULL;
+	size_t idx = 0;
 
 	ptr = strtok(raw_cmd, limit);
 
