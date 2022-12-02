@@ -34,9 +34,9 @@ int main(void)
 		else
 		{
 			wait(NULL);
-			printf("After execve\n");
-			printf("hi %s", cmd[0]);
 		}
-		return (0);
+		free(buff);
+		
 	}
+	return (0);
 }
