@@ -12,7 +12,6 @@
 #include <fcntl.h>
 #include <errno.h>
 #include <linux/limits.h>
-#define PRINTER(c) 
-(write(STDOUT_FILENO, c, strlen(c)));
+#define PRINTER(c) (write(STDOUT_FILENO, c, strlen(c)));
 char **split(char *raw_cmd, char *limit);
 #endif
