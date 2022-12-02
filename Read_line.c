@@ -10,6 +10,7 @@ int main(void)
 	pid_t pid;
 	int val;
 	char **cmd;
+	int status = 0;
 
 	buff = malloc(sizeof(char) * buffsize);
 	if (buff == NULL)
@@ -18,12 +19,18 @@ int main(void)
 	{
 		PRINTER("$ ");
 		getline(&buff, &buffsize, stdin);
-		cmd = split(buff, " ");
+		cmd = split(buff, DELIM);
+		if (strcmp(cmd[0], "exit") == 0)
+		{
+			free_array(cmd);
+			exit(0);
+		}
 		pid = fork();
 		if (pid == -1)
 		{
 			return (-1);
 		}
+		get_absolute_path(cmd);
 		if (pid == 0)
 		{
 
@@ -33,10 +40,12 @@ int main(void)
 		}
 		else
 		{
-			wait(NULL);
+			waitpid(pid, &status, 0);
+			kill(pid, SIGTERM);
+			free_array(cmd);
 		}
-		free(buff);
-		
 	}
+	free_buff(buff);
+	exit(EXIT_SUCCESS);
 	return (0);
 }
