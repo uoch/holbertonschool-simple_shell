@@ -36,7 +36,6 @@ int main(void)
 		{
 			return (-1);
 		}
-		get_absolute_path(cmd);
 		if (pid == 0)
 		{
 
