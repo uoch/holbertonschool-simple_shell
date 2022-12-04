@@ -19,6 +19,7 @@ extern char **environ;
 char **split(char *raw_cmd, char *limit);
 void get_absolute_path(char **cmd);
 void print_env(void);
+void execmd(char **cmd);
 
 
 #endif

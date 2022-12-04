@@ -10,16 +10,18 @@ int main(void)
 	pid_t pid;
 	int val;
 	char **cmd;
-	int status = 0;
+	struct stat status;
 
 	buff = malloc(sizeof(char) * buffsize);
 	if (buff == NULL)
 		return (0);
 	while (1)
 	{
-		PRINTER("$ ");
+		PRINTER("#cisfun$ ");
 		getline(&buff, &buffsize, stdin);
 		cmd = split(buff, DELIM);
+		if (!cmd )
+			exit(EXIT_SUCCESS);
 		if (strcmp(cmd[0], "exit") == 0)
 		{
 			free(cmd);
@@ -29,27 +31,11 @@ int main(void)
 		{
 			free(cmd);
 			print_env();
-			continue;
+			exit(EXIT_SUCCESS);
 		}
-		pid = fork();
-		if (pid == -1)
-		{
-			return (-1);
-		}
-		if (pid == 0)
-		{
-
-			val = execve(cmd[0], cmd, NULL);
-			if (val == -1)
-				perror("Error:555");
-		}
-		else
-		{
-			waitpid(pid, &status, 0);
-			kill(pid, SIGTERM);
-			free(cmd);
-			free(buff);
-		}
+		if (stat(cmd[0], &status) != 0)
+			get_absolute_path(cmd); /** get the path*/
+		execmd(cmd);
 	}
 
 	exit(EXIT_SUCCESS);

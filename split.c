@@ -5,13 +5,18 @@
  */
 void get_absolute_path(char **cmd)
 {
-	int i;
-	char *path = strdup(getenv("PATH"));
+	int i, j;
+	char *path;
+	char *PATH;
 	char *bin = NULL;
 	char **path_split = NULL;
 
+	PATH = getenv("PATH");
+	j = strlen(PATH);
+	path = malloc(sizeof(char)*j);
+	path = strdup(PATH);
 	if (path == NULL) /*if the path NULL we will create one*/
-		path = strdup("/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin");
+		path = strdup("/bincd:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin");
 	/* if cmd isnt the path we will find it in the bunary with env path*/
 	if (cmd[0][0] != '/' && strncmp(cmd[0], "./", 2) != 0)
 	{
