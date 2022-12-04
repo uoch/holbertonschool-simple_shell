@@ -16,7 +16,7 @@ void get_absolute_path(char **cmd)
 	path = malloc(sizeof(char)*j);
 	path = strdup(PATH);
 	if (path == NULL) /*if the path NULL we will create one*/
-		path = strdup("/bincd:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin");
+		path = strdup("/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:");
 	/* if cmd isnt the path we will find it in the bunary with env path*/
 	if (cmd[0][0] != '/' && strncmp(cmd[0], "./", 2) != 0)
 	{
@@ -27,8 +27,7 @@ void get_absolute_path(char **cmd)
 		for (i = 0; path_split[i]; i++)
 		{
 			/* alloc len path + '//' + len  binaire + 1 for the '\0' */
-			bin = calloc(sizeof(char),
-						 (strlen(path_split[i]) + 1 + strlen(cmd[0]) + 1));
+			bin = calloc(sizeof(char),(strlen(path_split[i]) + 1 + strlen(cmd[0]) + 1));
 			if (bin == NULL)
 				break;
 			strcat(bin, path_split[i]); /* concat path , the '//' and cmd */
