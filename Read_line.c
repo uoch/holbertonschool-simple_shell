@@ -7,8 +7,6 @@ int main(void)
 {
 	char *buff;
 	size_t buffsize = 32;
-	pid_t pid;
-	int val;
 	char **cmd;
 	struct stat status;
 
