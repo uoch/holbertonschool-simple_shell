@@ -14,13 +14,12 @@
 extern char **environ;
 
 #include <linux/limits.h>
-#define PRINTER(c) (write(STDOUT_FILENO, c, strlen(c)))
+#define PRINTER(c) (isatty(STDIN_FILENO),write(STDOUT_FILENO, c, strlen(c)))
 #define DELIM " \t\r\n\a"
 char **split(char *raw_cmd, char *limit);
 void get_absolute_path(char **cmd);
 void print_env(void);
 void execmd(char **cmd);
 void if_fun(char **cmd);
-
 
 #endif

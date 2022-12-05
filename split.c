@@ -13,7 +13,7 @@ void get_absolute_path(char **cmd)
 
 	PATH = getenv("PATH");
 	j = strlen(PATH);
-	path = malloc(sizeof(char)*j);
+	path = malloc(sizeof(char) * j);
 	path = strdup(PATH);
 	if (path == NULL) /*if the path NULL we will create one*/
 		path = strdup("/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:");
@@ -27,7 +27,7 @@ void get_absolute_path(char **cmd)
 		for (i = 0; path_split[i]; i++)
 		{
 			/* alloc len path + '//' + len  binaire + 1 for the '\0' */
-			bin = calloc(sizeof(char),(strlen(path_split[i]) + 1 + strlen(cmd[0]) + 1));
+			bin = calloc(sizeof(char), (strlen(path_split[i]) + 1 + strlen(cmd[0]) + 1));
 			if (bin == NULL)
 				break;
 			strcat(bin, path_split[i]); /* concat path , the '//' and cmd */
@@ -41,7 +41,7 @@ void get_absolute_path(char **cmd)
 			bin = NULL;
 		}
 		for (i = 0; path_split[i]; i++)
-		free(path_split[i]);
+			free(path_split[i]);
 		/* replace cmd with  path or  NULL if cmd not found */
 		free(cmd[0]);
 		cmd[0] = bin;
@@ -89,6 +89,23 @@ void print_env(void)
 		write(1, environ[c], len);
 		write(STDOUT_FILENO, "\n", 1);
 	}
-
 }
-
+/**
+ * Method to change directory
+ */
+int changeDirectory(char* args[]){
+	// If we write no path (only 'cd'), then go to the home directory
+	if (args[1] == NULL) {
+		chdir(getenv("HOME")); 
+		return 1;
+	}
+	// Else we change the directory to the one specified by the 
+	// argument, if possible
+	else{ 
+		if (chdir(args[1]) == -1) {
+			printf(" %s: no such directory\n", args[1]);
+            return -1;
+		}
+	}
+	return (0);
+}
