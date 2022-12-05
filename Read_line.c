@@ -17,7 +17,6 @@ int main(void)
 	}
 	while (getline(&buff, &buffsize, stdin) > 0)
 	{
-		PRINTER("$ ");
 		cmd = split(buff, DELIM);
 		if_fun(cmd);
 		execmd(cmd);
