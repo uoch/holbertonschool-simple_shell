@@ -15,21 +15,9 @@ int main(void)
 	{
 		return (0);
 	}
-	while (1)
+	while (getline(&buff, &buffsize, stdin) > 0)
 	{
 		PRINTER("$ ");
-		if (getline(&buff, &buffsize, stdin) == -1)
-		{
-			if (feof(stdin))
-				exit(EXIT_SUCCESS);
-			else
-			{
-				
-				buff= NULL;
-				perror("");
-				exit(1);
-			}
-		}
 		cmd = split(buff, DELIM);
 		if_fun(cmd);
 		execmd(cmd);
