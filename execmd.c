@@ -5,7 +5,7 @@ void execmd(char **cmd)
 
 	int val;
 	int status = 0;
-	pid_t pid;
+	pid_t pid = 0; 
 
 	pid = fork();
 	if (pid == -1)
@@ -23,11 +23,5 @@ void execmd(char **cmd)
 	{
 		waitpid(pid, &status, 0);
 		kill(pid, SIGTERM);
-	}
-	else
-	{
-		waitpid(pid, &status, 0);
-		kill(pid, SIGTERM);
-		free(cmd);
 	}
 }
