@@ -1,5 +1,8 @@
 #include "shell.h"
-
+/**
+ * if_fun - function that tests execution of a different command in cmd[]
+ * @cmd: the commande
+ */
 void if_fun(char **cmd)
 {
 	struct stat status;

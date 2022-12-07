@@ -1,5 +1,8 @@
 #include "shell.h"
-
+/**
+ * execmd - function that executes the command stored in cmd[]
+ * @cmd: the commande
+ */
 void execmd(char **cmd)
 {
 
