@@ -1,6 +1,6 @@
 #include "shell.h"
 /**
- * bin- function that read the path
+ * bin- search for the command in environment "PATH"
  * @cmd: the commande
  */
 void bin(char **cmd)
@@ -8,22 +8,22 @@ void bin(char **cmd)
 	int i;
 	char *path = NULL;
 	char *bin = NULL;
-	char **path_split = NULL;
+	char **tok = NULL;
 
 	path = strdup(getenv("PATH"));
 	if (path == NULL)
 		path = strdup(MYPATH);
 	if (cmd[0][0] != '/' && strncmp(cmd[0], "./", 2) != 0)
 	{
-		path_split = split(path, ":");
+		tok = split(path, ":");
 		free(path);
 		path = NULL;
-		for (i = 0; path_split[i]; i++)
+		for (i = 0; tok[i]; i++)
 		{
-			bin = calloc(sizeof(char), (strlen(path_split[i]) + 2 + strlen(cmd[0])));
+			bin = calloc(sizeof(char), (strlen(tok[i]) + 2 + strlen(cmd[0])));
 			if (bin == NULL)
 				break;
-			strcat(bin, path_split[i]);
+			strcat(bin, tok[i]);
 			strcat(bin, "/");
 			strcat(bin, cmd[0]);
 			if (access(bin, F_OK) == 0)
@@ -31,7 +31,7 @@ void bin(char **cmd)
 			free(bin);
 			bin = NULL;
 		}
-		freeArr(path_split);
+		freeArr(tok);
 		free(cmd[0]);
 		cmd[0] = bin;
 	}
@@ -57,6 +57,7 @@ char **split(char *buff, char *limit)
 	ptr = strtok(buff, limit);
 	if (!ptr)
 	{
+		free(buff);
 		exit(EXIT_FAILURE);
 	}
 	while (ptr)
