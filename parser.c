@@ -9,8 +9,8 @@ void bin(char **cmd)
 	char *path = NULL;
 	char *bin = NULL;
 	char **path_split = NULL;
-	path = strdup(getenv("PATH"));
 
+	path = strdup(getenv("PATH"));
 	if (path == NULL)
 		path = strdup(MYPATH);
 	if (cmd[0][0] != '/' && strncmp(cmd[0], "./", 2) != 0)
@@ -20,7 +20,7 @@ void bin(char **cmd)
 		path = NULL;
 		for (i = 0; path_split[i]; i++)
 		{
-			bin = calloc(sizeof(char), (strlen(path_split[i]) + 1 + strlen(cmd[0]) + 1));
+			bin = calloc(sizeof(char), (strlen(path_split[i]) + 2 + strlen(cmd[0])));
 			if (bin == NULL)
 				break;
 			strcat(bin, path_split[i]);
