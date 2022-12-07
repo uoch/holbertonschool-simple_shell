@@ -8,7 +8,7 @@ void execmd(char **cmd)
 
 	int val;
 	int status = 0;
-	pid_t pid = 0; 
+	pid_t pid = 0;
 
 	pid = fork();
 	if (pid == -1)

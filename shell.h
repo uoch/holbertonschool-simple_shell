@@ -18,10 +18,10 @@ extern char **environ;
 #define MYPATH "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:"
 
 #include <linux/limits.h>
-#define PRINTER(c) (isatty(STDIN_FILENO),write(STDOUT_FILENO, c, strlen(c)))
+#define PRINTER(c) (isatty(STDIN_FILENO), write(STDOUT_FILENO, c, strlen(c)))
 #define DELIM " \t\r\n\a"
 char **split(char *raw_cmd, char *limit);
-char **split_line(char *line ,char * limit);
+char **split_line(char *line, char *limit);
 void SIG_N(int signal);
 void bin(char **cmd);
 void print_env(void);

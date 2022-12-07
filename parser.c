@@ -85,8 +85,8 @@ void print_env(void)
 	}
 }
 /**
- * freeArr - function signal handler
- * @signal  : input
+ * freeArr - function free
+ * @array: : argument needs free
  */
 void freeArr(char **array)
 {
