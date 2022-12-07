@@ -53,6 +53,7 @@ char **split(char *buff, char *limit)
 	char *ptr = NULL;
 	char **cmd = NULL;
 	size_t idx = 0;
+
 	ptr = strtok(buff, limit);
 	if (!ptr)
 	{

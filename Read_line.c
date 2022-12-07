@@ -10,7 +10,7 @@ int main(void)
 	size_t buffsize = 1;
 	char **cmd;
 
-	buff = malloc(sizeof(char )* buffsize);
+	buff = malloc(sizeof(char) * buffsize);
 	signal(SIGINT, SIG_N);
 	if (buff == NULL)
 	{
