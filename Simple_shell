@@ -1,0 +1,80 @@
+.TH man 1 "man_1_simple_shell"
+.SH NAME
+man_1_simple_shell \- created by holberton school students Hana Ouerghemmi, Dhafer Hamza Sfaxi and Majdi Aribi.
+.SH SYNOPSIS
+man_1_simple_shell
+Description:
+.SH DESCRIPTION
+Shell or command interpreter or command interpreter is a computer program that provides a user interface to access to the operating system services.
+Bash is an sh-compatible command language interpreter that executes commands read from the standard input or from a file.
+.SH INVOCATION:
+If any of the files exist but cannot be read, bash reports an error.
+If any of the commands entered from the terminal do not exist, bash reports an error.
+If any of the entered commands exist and can be read, bash executes the entered command followed by a new line.
+When the project shell starts, bash reads and executes the command entered from ~ / bin /, if the files exist.
+When a login shell exits, bash reads and executes commands from the ~ / .bash / files, if the files exist.
+
+.SH DEFINITIONS:
+The following definitions are used in the rest of this document:
+
+White:
+A space or tabulation.
+
+Word:
+A sequence of characters considered as a single unit by the shell. Also known as token.
+name.
+
+A word consisting only of alphanumeric characters and underscores, and beginning with an alphabetic character or an underscore. Also referred to as an identifier.
+
+.SH THE COMMANDS EXECUTABLES IN THIS SHELL ARE:
+
+/ bin: Basic (or binary) system executables, when, for example, we execute the cp command we actually execute / bin / cp.
+
+
+cp: copy a file to another place.
+
+
+rm: Delete files
+
+sh, bash: Interpreters of commands.
+
+ls: Shows the contents of a folder.
+
+mkdir: Create a folder.
+
+rmdir: Delete a folder
+
+sleep: "Sleep" system during the seconds you indicate.
+
+touch: create a file.
+
+cat: Shows the contents of a file.
+
+echo: shows the content of what you indicate.
+
+kernelversion: shows the kernel version
+
+chgrp: Change a file group.
+
+kill: "Kill" a process.
+
+pwd: Shows the path of the folder where we are.
+
+chmod: Change the permissions of a file.
+
+ln: Create a link between files or folders.
+
+mv: Move a file.
+
+chown: Change the user of a file.
+
+.SH EXAMPLE OF THE COMMAND
+
+suppose that the following command is entered by keyboard: ls -l, The result when executing the command will be the all files in directory you choose.
+
+.SH Exit Status
+  0 if ok
+  1 if error
+
+.SH AUTHOR
+Chaouch Thameur (https://github.com/uoch)
