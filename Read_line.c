@@ -10,7 +10,7 @@ int main(void)
 	size_t buffsize = 1;
 	char **cmd;
 
-	buff = malloc(sizeof(char )* buffsize);
+	buff = malloc(sizeof(char) * buffsize);
 	signal(SIGINT, SIG_N);
 	if (buff == NULL)
 	{
@@ -20,6 +20,12 @@ int main(void)
 	while (getline(&buff, &buffsize, stdin) > 0)
 	{
 		cmd = split(buff, DELIM);
+		if (strcmp(cmd[0], "env") == 0)
+		{
+			print_env();
+			freeArr(cmd);
+			continue;
+		}
 		if_fun(cmd);
 	}
 	free(buff);

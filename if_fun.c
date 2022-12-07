@@ -16,11 +16,7 @@ void if_fun(char **cmd)
 		freeArr(cmd);
 		exit(EXIT_SUCCESS);
 	}
-	if (strcmp(cmd[0], "env") == 0)
-	{
-		print_env();
-		freeArr(cmd);
-	}
+	
 	if (stat(cmd[0], &status) != 0)
 		bin(cmd); /** get the path*/
 	if (cmd[0] == NULL)
