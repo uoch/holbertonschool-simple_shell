@@ -14,7 +14,7 @@ void if_fun(char **cmd)
 	if (strcmp(cmd[0], "exit") == 0)
 	{
 		freeArr(cmd);
-		exit(EXIT_SUCCESS);
+		exit(0);
 	}
 	if (stat(cmd[0], &status) != 0)
 		bin(cmd); /** get the path*/
